@@ -2,7 +2,7 @@ export type UserProps = {
   name: string
   email: string
   password: string
-  createdAt: Date
+  createdAt?: Date
 }
 
 // DDD: Qualquer propriedade da entidade só pode ser manipulada pela própria entidade
