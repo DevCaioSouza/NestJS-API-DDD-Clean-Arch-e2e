@@ -1,3 +1,5 @@
+import { Entity } from "@/shared/domain/entities/entity"
+
 export type UserProps = {
   name: string
   email: string
@@ -6,25 +8,25 @@ export type UserProps = {
 }
 
 // DDD: Qualquer propriedade da entidade só pode ser manipulada pela própria entidade
-export class UserEntity {
-  constructor(public readonly props: UserProps) {
+export class UserEntity extends Entity<UserProps> {
+  constructor(public readonly props: UserProps, id?: string) {
+    super(props, id)
     this.props.createdAt = this.props.createdAt ?? new Date();
-    // "??" Operador de coalescência nula
   }
 
-  get name(){
+  get name() {
     return this.props.name
   }
 
-  get email(){
+  get email() {
     return this.props.email
   }
 
-  get password(){
+  get password() {
     return this.props.password
   }
 
-  get createdAt(){
+  get createdAt() {
     return this.props.createdAt
   }
 }
